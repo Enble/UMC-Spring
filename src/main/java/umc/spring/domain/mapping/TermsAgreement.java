@@ -1,5 +1,6 @@
 package umc.spring.domain.mapping;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import umc.spring.domain.Member;
 import umc.spring.domain.Terms;
 import umc.spring.domain.common.BaseEntity;
@@ -27,6 +29,8 @@ public class TermsAgreement extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    @ColumnDefault("false")
     private Boolean isAgreed;
 
     @ManyToOne(fetch = FetchType.LAZY)

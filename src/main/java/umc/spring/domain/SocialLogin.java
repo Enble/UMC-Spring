@@ -1,5 +1,6 @@
 package umc.spring.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -29,10 +30,13 @@ public class SocialLogin extends BaseEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
     private SocialType socialType;
 
+    @Column(nullable = false, length = 50)
     private String externalId;
 
+    @Column(nullable = false, length = 256)
     private String accessToken;
 
     @ManyToOne(fetch = FetchType.LAZY)

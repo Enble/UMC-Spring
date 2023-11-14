@@ -1,5 +1,6 @@
 package umc.spring.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,10 +26,13 @@ public class Enquiry extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 20)
     private String title;
 
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
+    @Column(length = 500)
     private String imagePath;
 
     @ManyToOne(fetch = FetchType.LAZY)

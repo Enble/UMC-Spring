@@ -1,6 +1,7 @@
 package umc.spring.domain.mapping;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import umc.spring.domain.Member;
 import umc.spring.domain.Mission;
 import umc.spring.domain.PointHistory;
@@ -34,6 +36,8 @@ public class MemberMission extends BaseEntity {
     private Long id;
 
     @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    @ColumnDefault("'READY'")
     private MissionStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
