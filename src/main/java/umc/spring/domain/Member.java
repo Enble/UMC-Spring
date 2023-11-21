@@ -8,9 +8,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -21,7 +24,7 @@ import org.hibernate.annotations.ColumnDefault;
 import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.enums.Gender;
 import umc.spring.domain.enums.MemberStatus;
-import umc.spring.domain.mapping.FavoriteFood;
+import umc.spring.domain.mapping.MemberPrefer;
 import umc.spring.domain.mapping.MemberMission;
 import umc.spring.domain.mapping.TermsAgreement;
 
@@ -62,6 +65,10 @@ public class Member extends BaseEntity {
 
     private LocalDate inactiveDate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_code")
+    private Address address;
+
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<SocialLogin> socialLoginList = new ArrayList<>();
 
@@ -72,7 +79,7 @@ public class Member extends BaseEntity {
     private List<Enquiry> enquiryList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    private List<FavoriteFood> favoriteFoodList = new ArrayList<>();
+    private List<MemberPrefer> memberPreferList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<TermsAgreement> termsAgreementList = new ArrayList<>();
