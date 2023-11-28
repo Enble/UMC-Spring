@@ -24,7 +24,6 @@ import umc.spring.apipayload.code.status.ErrorStatus;
 @RestControllerAdvice(annotations = {RestController.class})
 public class ExceptionAdvice extends ResponseEntityExceptionHandler {
 
-
     @ExceptionHandler
     public ResponseEntity<Object> validation(ConstraintViolationException e, WebRequest request) {
         String errorMessage = e.getConstraintViolations().stream()
@@ -34,7 +33,6 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
 
         return handleExceptionInternalConstraint(e, ErrorStatus.valueOf(errorMessage), HttpHeaders.EMPTY, request);
     }
-
 
     @Override
     public ResponseEntity<Object> handleMethodArgumentNotValid(
