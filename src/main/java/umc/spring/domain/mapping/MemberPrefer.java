@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import umc.spring.domain.FoodCategory;
 import umc.spring.domain.Member;
 import umc.spring.domain.common.BaseEntity;
 
@@ -32,7 +33,7 @@ public class MemberPrefer extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
-    private umc.spring.domain.FoodCategory foodCategory;
+    private FoodCategory foodCategory;
 
     public void setMember(Member member) {
         if (this.member != null) {
