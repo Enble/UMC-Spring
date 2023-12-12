@@ -33,8 +33,8 @@ public class MemberConverter {
         }
 
         return Member.builder()
-                .address(request.getAddress())
                 .specAddress(request.getSpecAddress())
+                .birthday(request.getBirthday())
                 .gender(gender)
                 .name(request.getName())
                 .memberPreferList(new ArrayList<>())

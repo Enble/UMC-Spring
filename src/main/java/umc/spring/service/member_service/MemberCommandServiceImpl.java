@@ -9,6 +9,7 @@ import umc.spring.apipayload.code.status.ErrorStatus;
 import umc.spring.apipayload.exception.handler.FoodCategoryHandler;
 import umc.spring.convertor.MemberConverter;
 import umc.spring.convertor.MemberPreferConverter;
+import umc.spring.domain.FoodCategory;
 import umc.spring.domain.Member;
 import umc.spring.domain.mapping.MemberPrefer;
 import umc.spring.repository.FoodCategoryRepository;
@@ -28,15 +29,14 @@ public class MemberCommandServiceImpl implements MemberCommandService {
     @Transactional
     public Member joinMember(JoinDTO request) {
         Member newMember = MemberConverter.toMember(request);
-        List<umc.spring.domain.FoodCategory> foodFoodCategoryList = request.getPreferCategory().stream()
-                .map(category -> {
-                    return foodCategoryRepository.findById(category).orElseThrow(() -> new FoodCategoryHandler(
-                            ErrorStatus.FOOD_CATEGORY_NOT_FOUND));
-                }).collect(Collectors.toList());
+        List<FoodCategory> foodFoodCategoryList = request.getPreferCategory().stream()
+                .map(category -> foodCategoryRepository.findById(category).orElseThrow(
+                        () -> new FoodCategoryHandler(ErrorStatus.FOOD_CATEGORY_NOT_FOUND))
+                ).collect(Collectors.toList());
 
         List<MemberPrefer> memberPreferList = MemberPreferConverter.toMemberPreferList(foodFoodCategoryList);
 
-        memberPreferList.forEach(memberPrefer -> {memberPrefer.setMember(newMember);});
+        memberPreferList.forEach(memberPrefer -> memberPrefer.setMember(newMember));
 
         return memberRepository.save(newMember);
     }

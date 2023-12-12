@@ -3,7 +3,6 @@ package umc.spring.domain;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,8 +32,8 @@ public class Shop extends BaseEntity {
     private Integer star;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "address_id")
-    private Address address;
+    @JoinColumn(name = "region_id")
+    private Region region;
 
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();

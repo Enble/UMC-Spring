@@ -21,6 +21,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.enums.Gender;
 import umc.spring.domain.enums.MemberStatus;
@@ -30,6 +32,8 @@ import umc.spring.domain.mapping.TermsAgreement;
 
 @Entity
 @Getter
+@DynamicInsert
+@DynamicUpdate
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -52,22 +56,19 @@ public class Member extends BaseEntity {
     @Column(nullable = false)
     private LocalDate birthday;
 
-    @Column(nullable = false, length = 50)
+//    @Column(nullable = false, length = 50)
     private String email;
 
-    @Column(nullable = false, length = 20)
+    @Column(length = 20)
+    @ColumnDefault("'NONE'")
     private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
+    @Column(length = 20)
     @ColumnDefault("'ACTIVE'")
     private MemberStatus status;
 
     private LocalDate inactiveDate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "address_code")
-    private Address address;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<SocialLogin> socialLoginList = new ArrayList<>();
@@ -89,5 +90,4 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<PointHistory> pointHistoryList = new ArrayList<>();
-
 }

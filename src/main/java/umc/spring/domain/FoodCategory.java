@@ -26,7 +26,4 @@ public class FoodCategory extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String name;
 
-    @Column(nullable = false, length = 20)
-    private String dtype;
-
 }
