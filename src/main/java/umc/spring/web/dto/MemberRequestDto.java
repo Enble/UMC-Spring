@@ -10,7 +10,7 @@ import lombok.Value;
 import umc.spring.validation.annotation.ExistCategories;
 
 @Value
-public class MemberRequestDTO {
+public class MemberRequestDto {
 
     @Getter
     public static class JoinDTO {

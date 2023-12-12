@@ -1,18 +1,23 @@
 package umc.spring.web.dto;
 
 import java.time.LocalDateTime;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-public class MemberResponseDTO {
+public class ShopResponseDto {
+
+    private ShopResponseDto() {
+    }
+
     @Builder
     @Getter
-    @NoArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     @AllArgsConstructor
-    public static class JoinResultDTO{
-        Long memberId;
+    public static class CreateResultDto {
+        Long shopId;
         LocalDateTime createdAt;
     }
 }

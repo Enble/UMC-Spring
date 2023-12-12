@@ -1,16 +1,16 @@
-package umc.spring.convertor;
+package umc.spring.converter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import umc.spring.domain.Member;
 import umc.spring.domain.enums.Gender;
-import umc.spring.web.dto.MemberRequestDTO.JoinDTO;
-import umc.spring.web.dto.MemberResponseDTO;
+import umc.spring.web.dto.MemberRequestDto.JoinDTO;
+import umc.spring.web.dto.MemberResponseDto;
 
 public class MemberConverter {
 
-    public static MemberResponseDTO.JoinResultDTO toJoinResultDTO(Member member){
-        return MemberResponseDTO.JoinResultDTO.builder()
+    public static MemberResponseDto.JoinResultDTO toJoinResultDTO(Member member){
+        return MemberResponseDto.JoinResultDTO.builder()
                 .memberId(member.getId())
                 .createdAt(LocalDateTime.now())
                 .build();

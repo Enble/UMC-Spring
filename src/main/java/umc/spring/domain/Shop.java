@@ -3,6 +3,7 @@ package umc.spring.domain;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,13 @@ public class Shop extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer star;
+    @Column(nullable = false, length = 50)
+    private String name;
+
+    @Column(nullable = false, length = 50)
+    private String address;
+
+    private Double score;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id")
@@ -40,5 +47,13 @@ public class Shop extends BaseEntity {
 
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
     private List<Mission> missionList = new ArrayList<>();
+
+    public void setRegion(Region region) {
+        if (this.region != null) {
+            this.region.getShopList().remove(this);
+        }
+        this.region = region;
+        region.getShopList().add(this);
+    }
 
 }
