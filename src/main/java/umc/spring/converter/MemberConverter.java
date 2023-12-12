@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import umc.spring.domain.Member;
 import umc.spring.domain.enums.Gender;
-import umc.spring.web.dto.MemberRequestDto.JoinDTO;
-import umc.spring.web.dto.MemberResponseDto;
+import umc.spring.web.dto.member.MemberRequestDto.JoinDTO;
+import umc.spring.web.dto.member.MemberResponseDto;
 
 public class MemberConverter {
 

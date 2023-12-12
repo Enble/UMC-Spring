@@ -3,8 +3,8 @@ package umc.spring.converter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import umc.spring.domain.Shop;
-import umc.spring.web.dto.ShopRequestDto;
-import umc.spring.web.dto.ShopResponseDto;
+import umc.spring.web.dto.shop.ShopRequestDto;
+import umc.spring.web.dto.shop.ShopResponseDto;
 
 public class ShopConverter {
 

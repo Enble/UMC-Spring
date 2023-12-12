@@ -11,8 +11,8 @@ import umc.spring.apipayload.ApiResponse;
 import umc.spring.converter.ShopConverter;
 import umc.spring.domain.Shop;
 import umc.spring.service.shop_service.ShopCommandService;
-import umc.spring.web.dto.ShopRequestDto;
-import umc.spring.web.dto.ShopResponseDto;
+import umc.spring.web.dto.shop.ShopRequestDto;
+import umc.spring.web.dto.shop.ShopResponseDto;
 
 @RestController
 @RequiredArgsConstructor

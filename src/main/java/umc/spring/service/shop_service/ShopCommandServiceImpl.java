@@ -9,7 +9,7 @@ import umc.spring.converter.ShopConverter;
 import umc.spring.domain.Shop;
 import umc.spring.repository.RegionRepository;
 import umc.spring.repository.ShopRepository;
-import umc.spring.web.dto.ShopRequestDto;
+import umc.spring.web.dto.shop.ShopRequestDto;
 
 @Service
 @RequiredArgsConstructor

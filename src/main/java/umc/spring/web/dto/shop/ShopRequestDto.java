@@ -1,4 +1,4 @@
-package umc.spring.web.dto;
+package umc.spring.web.dto.shop;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
