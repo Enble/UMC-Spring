@@ -1,24 +1,22 @@
-package umc.spring.web.dto.review;
+package umc.spring.web.dto.mission;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
 
-public class ReviewRequestDto {
+public class MissionRequestDto {
 
-    private ReviewRequestDto() {
+    private MissionRequestDto() {
     }
 
     @Getter
-    public static class CreateReviewDto {
+    public static class CreateMissionDto {
         @NotNull
-        Integer star;
+        Integer point;
         @NotBlank
-        String title;
+        String classificationNumber;
         @NotBlank
         String body;
-        @NotNull
-        Long memberId;
         @NotNull
         Long shopId;
     }
