@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.spring.apipayload.code.status.ErrorStatus;
 import umc.spring.apipayload.exception.handler.MemberHandler;
-import umc.spring.apipayload.exception.handler.ReviewHandler;
 import umc.spring.apipayload.exception.handler.ShopHandler;
 import umc.spring.converter.ReviewConverter;
 import umc.spring.domain.Member;
@@ -14,7 +13,7 @@ import umc.spring.domain.Shop;
 import umc.spring.repository.MemberRepository;
 import umc.spring.repository.ReviewRepository;
 import umc.spring.repository.ShopRepository;
-import umc.spring.web.dto.review.ReviewRequestDto;
+import umc.spring.web.dto.review.ReviewRequestDto.CreateReviewDto;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +26,7 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
 
     @Override
     @Transactional
-    public Review createReview(ReviewRequestDto.CreateDto request) {
+    public Review createReview(CreateReviewDto request) {
         Review review = ReviewConverter.toReview(request);
 
         Member member = memberRepository.findById(request.getMemberId())

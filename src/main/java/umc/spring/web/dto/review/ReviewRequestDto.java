@@ -10,7 +10,7 @@ public class ReviewRequestDto {
     }
 
     @Getter
-    public static class CreateDto {
+    public static class CreateReviewDto {
         @NotNull
         Long memberId;
         @NotNull

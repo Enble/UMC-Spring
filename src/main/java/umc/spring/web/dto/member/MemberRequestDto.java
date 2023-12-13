@@ -13,7 +13,7 @@ import umc.spring.validation.annotation.ExistCategories;
 public class MemberRequestDto {
 
     @Getter
-    public static class JoinDTO {
+    public static class JoinMemberDto {
         @NotBlank
         String name;
         @NotNull

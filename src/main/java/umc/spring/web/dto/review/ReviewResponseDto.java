@@ -16,7 +16,7 @@ public class ReviewResponseDto {
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     @AllArgsConstructor
-    public static class CreateResultDto {
+    public static class CreateReviewResultDto {
         Long reviewId;
         LocalDateTime createdAt;
     }

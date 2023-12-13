@@ -14,7 +14,7 @@ import umc.spring.domain.Member;
 import umc.spring.domain.mapping.MemberPrefer;
 import umc.spring.repository.FoodCategoryRepository;
 import umc.spring.repository.MemberRepository;
-import umc.spring.web.dto.member.MemberRequestDto.JoinDTO;
+import umc.spring.web.dto.member.MemberRequestDto.JoinMemberDto;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +27,7 @@ public class MemberCommandServiceImpl implements MemberCommandService {
 
     @Override
     @Transactional
-    public Member joinMember(JoinDTO request) {
+    public Member joinMember(JoinMemberDto request) {
         Member newMember = MemberConverter.toMember(request);
         List<FoodCategory> foodFoodCategoryList = request.getPreferCategory().stream()
                 .map(category -> foodCategoryRepository.findById(category).orElseThrow(

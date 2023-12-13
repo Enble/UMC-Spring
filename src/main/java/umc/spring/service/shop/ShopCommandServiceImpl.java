@@ -10,7 +10,7 @@ import umc.spring.domain.Region;
 import umc.spring.domain.Shop;
 import umc.spring.repository.RegionRepository;
 import umc.spring.repository.ShopRepository;
-import umc.spring.web.dto.shop.ShopRequestDto;
+import umc.spring.web.dto.shop.ShopRequestDto.CreateShopDto;
 
 @Service
 @RequiredArgsConstructor
@@ -23,7 +23,7 @@ public class ShopCommandServiceImpl implements ShopCommandService {
 
     @Override
     @Transactional
-    public Shop createShop(ShopRequestDto.CreateDto dto) {
+    public Shop createShop(CreateShopDto dto) {
         Shop shop = ShopConverter.toShop(dto);
         Region region = regionRepository.findById(dto.getRegionId())
                 .orElseThrow(() -> new RegionHandler(ErrorStatus.REGION_NOT_FOUND));

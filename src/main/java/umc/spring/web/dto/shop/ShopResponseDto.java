@@ -16,7 +16,7 @@ public class ShopResponseDto {
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     @AllArgsConstructor
-    public static class CreateResultDto {
+    public static class CreateShopResultDto {
         Long shopId;
         LocalDateTime createdAt;
     }

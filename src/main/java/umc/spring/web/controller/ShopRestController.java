@@ -15,9 +15,9 @@ import umc.spring.domain.Shop;
 import umc.spring.service.review.ReviewCommandService;
 import umc.spring.service.shop.ShopCommandService;
 import umc.spring.web.dto.review.ReviewRequestDto;
-import umc.spring.web.dto.review.ReviewResponseDto;
+import umc.spring.web.dto.review.ReviewResponseDto.CreateReviewResultDto;
 import umc.spring.web.dto.shop.ShopRequestDto;
-import umc.spring.web.dto.shop.ShopResponseDto;
+import umc.spring.web.dto.shop.ShopResponseDto.CreateShopResultDto;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,14 +29,14 @@ public class ShopRestController {
     private final ReviewCommandService reviewCommandService;
 
     @PostMapping()
-    public ApiResponse<ShopResponseDto.CreateResultDto> create(@RequestBody @Valid ShopRequestDto.CreateDto request) {
+    public ApiResponse<CreateShopResultDto> create(@RequestBody @Valid ShopRequestDto.CreateShopDto request) {
         Shop shop = shopCommandService.createShop(request);
         return ApiResponse.onSuccess(ShopConverter.toCreateResultDto(shop));
     }
 
     @PostMapping("/reviews")
-    public ApiResponse<ReviewResponseDto.CreateResultDto> createReview(
-            @RequestBody @Valid ReviewRequestDto.CreateDto request) {
+    public ApiResponse<CreateReviewResultDto> createReview(
+            @RequestBody @Valid ReviewRequestDto.CreateReviewDto request) {
         Review review = reviewCommandService.createReview(request);
         return ApiResponse.onSuccess(ReviewConverter.toCreateResultDto(review));
     }

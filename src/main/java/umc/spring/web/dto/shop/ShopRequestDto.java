@@ -10,7 +10,7 @@ public class ShopRequestDto {
     }
 
     @Getter
-    public static class CreateDto {
+    public static class CreateShopDto {
         @NotBlank
         String name;
         @NotBlank
