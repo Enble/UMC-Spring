@@ -1,4 +1,4 @@
-package umc.spring.web.dto;
+package umc.spring.web.dto.review;
 
 import java.time.LocalDateTime;
 import lombok.AccessLevel;
@@ -7,17 +7,17 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-public class ShopResponseDto {
+public class ReviewResponseDto {
 
-    private ShopResponseDto() {
+    private ReviewResponseDto() {
     }
 
     @Builder
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     @AllArgsConstructor
-    public static class CreateResultDto {
-        Long shopId;
+    public static class CreateReviewResultDto {
+        Long reviewId;
         LocalDateTime createdAt;
     }
 }

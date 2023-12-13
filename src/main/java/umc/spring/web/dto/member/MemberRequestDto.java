@@ -1,4 +1,4 @@
-package umc.spring.web.dto;
+package umc.spring.web.dto.member;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,7 +13,7 @@ import umc.spring.validation.annotation.ExistCategories;
 public class MemberRequestDto {
 
     @Getter
-    public static class JoinDTO {
+    public static class JoinMemberDto {
         @NotBlank
         String name;
         @NotNull

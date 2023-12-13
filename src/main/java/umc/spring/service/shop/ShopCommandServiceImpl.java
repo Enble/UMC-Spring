@@ -1,4 +1,4 @@
-package umc.spring.service.shop_service;
+package umc.spring.service.shop;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -6,10 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 import umc.spring.apipayload.code.status.ErrorStatus;
 import umc.spring.apipayload.exception.handler.RegionHandler;
 import umc.spring.converter.ShopConverter;
+import umc.spring.domain.Region;
 import umc.spring.domain.Shop;
 import umc.spring.repository.RegionRepository;
 import umc.spring.repository.ShopRepository;
-import umc.spring.web.dto.ShopRequestDto;
+import umc.spring.web.dto.shop.ShopRequestDto.CreateShopDto;
 
 @Service
 @RequiredArgsConstructor
@@ -22,9 +23,11 @@ public class ShopCommandServiceImpl implements ShopCommandService {
 
     @Override
     @Transactional
-    public Shop createShop(ShopRequestDto.CreateDto dto) {
+    public Shop createShop(CreateShopDto dto) {
         Shop shop = ShopConverter.toShop(dto);
-        regionRepository.findById(dto.getRegionId()).orElseThrow(() -> new RegionHandler(ErrorStatus.REGION_NOT_FOUND));
+        Region region = regionRepository.findById(dto.getRegionId())
+                .orElseThrow(() -> new RegionHandler(ErrorStatus.REGION_NOT_FOUND));
+        shop.setRegion(region);
 
         return shopRepository.save(shop);
     }

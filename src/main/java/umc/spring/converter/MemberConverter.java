@@ -4,19 +4,19 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import umc.spring.domain.Member;
 import umc.spring.domain.enums.Gender;
-import umc.spring.web.dto.MemberRequestDto.JoinDTO;
-import umc.spring.web.dto.MemberResponseDto;
+import umc.spring.web.dto.member.MemberRequestDto.JoinMemberDto;
+import umc.spring.web.dto.member.MemberResponseDto.JoinMemberResultDto;
 
 public class MemberConverter {
 
-    public static MemberResponseDto.JoinResultDTO toJoinResultDTO(Member member){
-        return MemberResponseDto.JoinResultDTO.builder()
+    public static JoinMemberResultDto toJoinResultDTO(Member member){
+        return JoinMemberResultDto.builder()
                 .memberId(member.getId())
                 .createdAt(LocalDateTime.now())
                 .build();
     }
 
-    public static Member toMember(JoinDTO request){
+    public static Member toMember(JoinMemberDto request){
 
         Gender gender = null;
 
