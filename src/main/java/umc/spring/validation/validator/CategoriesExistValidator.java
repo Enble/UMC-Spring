@@ -6,7 +6,7 @@ import javax.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.spring.apipayload.code.status.ErrorStatus;
-import umc.spring.service.food_category_service.FoodCategoryCommandService;
+import umc.spring.service.food_category.FoodCategoryCommandService;
 import umc.spring.validation.annotation.ExistCategories;
 
 @Component

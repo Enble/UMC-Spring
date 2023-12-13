@@ -10,9 +10,9 @@ public class ReviewConverter {
     private ReviewConverter() {
     }
 
-    public static ReviewResponseDto.CreateResultDto toCreateResultDto(Long reviewId) {
+    public static ReviewResponseDto.CreateResultDto toCreateResultDto(Review review) {
         return ReviewResponseDto.CreateResultDto.builder()
-                .reviewId(reviewId)
+                .reviewId(review.getId())
                 .createdAt(LocalDateTime.now())
                 .build();
     }

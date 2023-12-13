@@ -1,4 +1,4 @@
-package umc.spring.service.food_category_service;
+package umc.spring.service.food_category;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

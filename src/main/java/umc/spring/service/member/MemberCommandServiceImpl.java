@@ -1,4 +1,4 @@
-package umc.spring.service.member_service;
+package umc.spring.service.member;
 
 import java.util.List;
 import java.util.stream.Collectors;

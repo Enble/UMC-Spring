@@ -12,6 +12,10 @@ public class ReviewRequestDto {
     @Getter
     public static class CreateDto {
         @NotNull
+        Long memberId;
+        @NotNull
+        Long shopId;
+        @NotNull
         Integer star;
         @NotBlank
         String title;
