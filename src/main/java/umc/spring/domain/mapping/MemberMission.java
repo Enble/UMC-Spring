@@ -20,7 +20,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import umc.spring.domain.Member;
 import umc.spring.domain.Mission;
-import umc.spring.domain.PointHistory;
 import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.enums.MissionStatus;
 
@@ -48,7 +47,20 @@ public class MemberMission extends BaseEntity {
     @JoinColumn(name = "mission_id")
     private Mission mission;
 
-    @OneToOne(mappedBy = "memberMission", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private PointHistory pointHistory;
+    public void setMember(Member member) {
+        if (this.member != null) {
+            this.member.getMemberMissionList().remove(this);
+        }
+        this.member = member;
+        member.getMemberMissionList().add(this);
+    }
+
+    public void setMission(Mission mission) {
+        if (this.mission != null) {
+            this.mission.getMemberMissionList().remove(this);
+        }
+        this.mission = mission;
+        mission.getMemberMissionList().add(this);
+    }
 
 }

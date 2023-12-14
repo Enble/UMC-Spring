@@ -59,6 +59,8 @@ public class Member extends BaseEntity {
 //    @Column(nullable = false, length = 50)
     private String email;
 
+    private Long point;
+
     @Column(length = 20)
     @ColumnDefault("'NONE'")
     private String phoneNumber;
@@ -87,9 +89,6 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<MemberMission> memberMissionList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    private List<PointHistory> pointHistoryList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();
