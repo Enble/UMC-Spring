@@ -7,10 +7,14 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Value;
+import umc.spring.domain.enums.MissionStatus;
 import umc.spring.validation.annotation.ExistCategories;
 
 @Value
 public class MemberRequestDto {
+
+    private MemberRequestDto() {
+    }
 
     @Getter
     public static class JoinMemberDto {
@@ -25,5 +29,4 @@ public class MemberRequestDto {
         @ExistCategories
         List<Long> preferCategory;
     }
-
 }
