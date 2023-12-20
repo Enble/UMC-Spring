@@ -3,6 +3,7 @@ package umc.spring.web.dto.mission;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
+import umc.spring.validation.annotation.ExistShop;
 
 public class MissionRequestDto {
 
@@ -17,7 +18,7 @@ public class MissionRequestDto {
         String classificationNumber;
         @NotBlank
         String body;
-        @NotNull
+        @ExistShop
         Long shopId;
     }
 }

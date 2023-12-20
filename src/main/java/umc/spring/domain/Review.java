@@ -29,7 +29,7 @@ public class Review extends BaseEntity {
 
     @Column(nullable = false)
     @ColumnDefault("0")
-    private Integer star;
+    private Float star;
 
     @Column(nullable = false, length = 20)
     private String title;

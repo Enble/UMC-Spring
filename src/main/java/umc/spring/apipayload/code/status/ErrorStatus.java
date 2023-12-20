@@ -21,22 +21,25 @@ public enum ErrorStatus implements BaseErrorCode {
     NICKNAME_NOT_EXIST(HttpStatus.BAD_REQUEST, "MEMBER4002", "닉네임은 필수 입니다."),
 
     // 예시,,,
-    ARTICLE_NOT_FOUND(HttpStatus.NOT_FOUND, "ARTICLE4001", "게시글이 없습니다."),
+    ARTICLE_NOT_FOUND(HttpStatus.NOT_FOUND, "ARTICLE4041", "게시글이 없습니다."),
 
     // For Test
     TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트"),
 
+    // 페이지 number Error
+    PAGE_NUMBER_BELOW_ZERO(HttpStatus.BAD_REQUEST, "PAGE_NUMBER4001", "페이지 번호는 1 이상이어야 합니다."),
+
     // FoodCategory Error
-    FOOD_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "FOOD_CATEGORY4001", "음식 카테고리가 없습니다."),
+    FOOD_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "FOOD_CATEGORY4041", "음식 카테고리가 없습니다."),
 
     // Region Error
-    REGION_NOT_FOUND(HttpStatus.NOT_FOUND, "REGION4001", "지역이 없습니다."),
+    REGION_NOT_FOUND(HttpStatus.NOT_FOUND, "REGION4041", "지역이 없습니다."),
 
     // Mission Error
-    MISSION_NOT_FOUND(HttpStatus.NOT_FOUND, "MISSION4001", "미션을 찾을 수 없습니다."),
+    MISSION_NOT_FOUND(HttpStatus.NOT_FOUND, "MISSION4041", "미션을 찾을 수 없습니다."),
 
     // Shop Error
-    SHOP_NOT_FOUND(HttpStatus.NOT_FOUND, "SHOP4001", "가게가 없습니다.");
+    SHOP_NOT_FOUND(HttpStatus.NOT_FOUND, "SHOP4041", "가게가 없습니다.");
 
     private final HttpStatus httpStatus;
     private final String code;
