@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
-import umc.spring.domain.Mission;
 import umc.spring.domain.mapping.MemberMission;
 import umc.spring.web.dto.member_mission.MemberMissionResponseDto.CreateMemberMissionResultDto;
 import umc.spring.web.dto.mission.MissionResponseDto.MissionPreviewDto;

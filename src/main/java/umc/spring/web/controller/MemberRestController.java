@@ -25,7 +25,6 @@ import umc.spring.domain.mapping.MemberMission;
 import umc.spring.service.member.MemberCommandService;
 import umc.spring.service.member_mission.MemberMissionCommandService;
 import umc.spring.service.member_mission.MemberMissionQueryService;
-import umc.spring.service.mission.MissionQueryService;
 import umc.spring.service.review.ReviewQueryService;
 import umc.spring.validation.annotation.ExistMember;
 import umc.spring.validation.annotation.ValidPageNumber;
@@ -45,7 +44,6 @@ public class MemberRestController {
     private final MemberCommandService memberCommandService;
     private final MemberMissionCommandService memberMissionCommandService;
     private final ReviewQueryService reviewQueryService;
-    private final MissionQueryService missionQueryService;
     private final MemberMissionQueryService memberMissionQueryService;
 
     @PostMapping()
