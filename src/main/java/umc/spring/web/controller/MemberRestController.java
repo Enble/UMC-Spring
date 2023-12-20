@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -89,5 +90,12 @@ public class MemberRestController {
             @ValidPageNumber @RequestParam(name = "page") Integer page) {
         Page<MemberMission> memberMissionList = memberMissionQueryService.getMemberMissionList(memberId, page);
         return ApiResponse.onSuccess(MemberMissionConverter.toMissionPreviewListDto(memberMissionList));
+    }
+
+    @PatchMapping("/missions/{memberMissionId}")
+    @Operation(summary = "회원 미션 완료", description = "회원 미션을 완료합니다.")
+    public void completeMemberMission(
+            @PathVariable(name = "memberMissionId") Long memberMissionId) {
+        memberMissionCommandService.completeMemberMission(memberMissionId);
     }
 }

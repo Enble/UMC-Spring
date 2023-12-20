@@ -5,4 +5,5 @@ import umc.spring.web.dto.member_mission.MemberMissionRequestDto.CreateMemberMis
 
 public interface MemberMissionCommandService {
     MemberMission createMemberMission(CreateMemberMissionDto memberMissionRequestDto);
+    void completeMemberMission(Long memberMissionId);
 }

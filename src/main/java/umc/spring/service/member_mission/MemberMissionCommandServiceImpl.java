@@ -41,4 +41,14 @@ public class MemberMissionCommandServiceImpl implements MemberMissionCommandServ
 
         return memberMissionRepository.save(memberMission);
     }
+
+    @Override
+    @Transactional
+    public void completeMemberMission(Long memberMissionId) {
+        MemberMission memberMission = memberMissionRepository.findById(memberMissionId)
+                .orElseThrow(() -> new MissionHandler(ErrorStatus.MEMBER_MISSION_NOT_FOUND));
+        memberMission.completeMission();
+    }
+
+
 }
