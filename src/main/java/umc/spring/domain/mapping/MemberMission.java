@@ -63,4 +63,8 @@ public class MemberMission extends BaseEntity {
         mission.getMemberMissionList().add(this);
     }
 
+    public void completeMission() {
+        this.status = MissionStatus.COMPLETED;
+    }
+
 }
