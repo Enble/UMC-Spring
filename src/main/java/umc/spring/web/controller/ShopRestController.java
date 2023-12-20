@@ -25,12 +25,14 @@ import umc.spring.domain.Mission;
 import umc.spring.domain.Review;
 import umc.spring.domain.Shop;
 import umc.spring.service.mission.MissionCommandService;
+import umc.spring.service.mission.MissionQueryService;
 import umc.spring.service.review.ReviewCommandService;
 import umc.spring.service.review.ReviewQueryService;
 import umc.spring.service.shop.ShopCommandService;
 import umc.spring.validation.annotation.ExistShop;
 import umc.spring.validation.annotation.ValidPageNumber;
 import umc.spring.web.dto.mission.MissionRequestDto;
+import umc.spring.web.dto.mission.MissionResponseDto;
 import umc.spring.web.dto.mission.MissionResponseDto.CreateMissionResultDto;
 import umc.spring.web.dto.review.ReviewRequestDto;
 import umc.spring.web.dto.review.ReviewResponseDto;
@@ -48,6 +50,7 @@ public class ShopRestController {
     private final ReviewCommandService reviewCommandService;
     private final MissionCommandService missionCommandService;
     private final ReviewQueryService reviewQueryService;
+    private final MissionQueryService missionQueryService;
 
     @PostMapping
     public ApiResponse<CreateShopResultDto> createShop(@RequestBody @Valid ShopRequestDto.CreateShopDto request) {
@@ -84,9 +87,26 @@ public class ShopRestController {
             @Parameter(name = "shopId", description = "가게 id, path variable 입니다.", required = true),
             @Parameter(name = "page", description = "페이지 번호, 0번이 1페이지 입니다.", required = true)
     })
-    public ApiResponse<ReviewResponseDto.ReviewPreviewListDto> getReviewList(@ExistShop @PathVariable(name = "shopId") Long shopId,
-                                                                             @ValidPageNumber @RequestParam(name = "page") Integer page) {
+    public ApiResponse<ReviewResponseDto.ReviewPreviewListDto> getReviewList(
+            @ExistShop @PathVariable(name = "shopId") Long shopId,
+            @ValidPageNumber @RequestParam(name = "page") Integer page) {
         Page<Review> reviewList = reviewQueryService.getReviewList(shopId, page);
         return ApiResponse.onSuccess(ReviewConverter.toReviewPreviewListDto(reviewList));
+    }
+
+    @GetMapping("/{shopId}/missions")
+    @Operation(summary = "가게 미션 목록 조회", description = "가게 미션 목록을 조회하며, 페이징을 포함합니다. query string으로 page 번호를 받습니다.")
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200", description = "성공"),
+    })
+    @Parameters({
+            @Parameter(name = "shopId", description = "가게 id, path variable 입니다.", required = true),
+            @Parameter(name = "page", description = "페이지 번호, 0번이 1페이지 입니다.", required = true)
+    })
+    public ApiResponse<MissionResponseDto.MissionPreviewListDto> getMissionList(
+            @ExistShop @PathVariable(name = "shopId") Long shopId,
+            @ValidPageNumber @RequestParam(name = "page") Integer page) {
+        Page<Mission> missionList = missionQueryService.getMissionList(shopId, page);
+        return ApiResponse.onSuccess(MissionConverter.toMissionPreviewListDto(missionList));
     }
 }
