@@ -25,7 +25,7 @@ public class ReviewResponseDto {
 
     @Builder
     @Getter
-    @NoArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     @AllArgsConstructor
     public static class ReviewPreviewListDto {
         List<ReviewPreviewDto> reviewList;
@@ -38,7 +38,7 @@ public class ReviewResponseDto {
 
     @Builder
     @Getter
-    @NoArgsConstructor
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     @AllArgsConstructor
     public static class ReviewPreviewDto {
         String ownerNickname;
@@ -46,4 +46,5 @@ public class ReviewResponseDto {
         String body;
         LocalDate createdAt;
     }
+
 }
