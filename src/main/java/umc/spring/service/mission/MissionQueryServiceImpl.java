@@ -23,4 +23,6 @@ public class MissionQueryServiceImpl implements MissionQueryService {
         Shop shop = shopRepository.findById(shopId).get();
         return missionRepository.findAllByShop(shop, PageRequest.of(page, 10));
     }
+
+
 }
