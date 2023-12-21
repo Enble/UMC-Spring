@@ -30,7 +30,7 @@ import umc.spring.service.review.ReviewCommandService;
 import umc.spring.service.review.ReviewQueryService;
 import umc.spring.service.shop.ShopCommandService;
 import umc.spring.validation.annotation.ExistShop;
-import umc.spring.validation.annotation.ValidPageNumber;
+import umc.spring.validation.annotation.CheckPage;
 import umc.spring.web.dto.mission.MissionRequestDto;
 import umc.spring.web.dto.mission.MissionResponseDto;
 import umc.spring.web.dto.mission.MissionResponseDto.CreateMissionResultDto;
@@ -89,8 +89,8 @@ public class ShopRestController {
     })
     public ApiResponse<ReviewResponseDto.ReviewPreviewListDto> getReviewList(
             @ExistShop @PathVariable(name = "shopId") Long shopId,
-            @ValidPageNumber @RequestParam(name = "page") Integer page) {
-        Page<Review> reviewList = reviewQueryService.getReviewList(shopId, page);
+            @CheckPage @RequestParam(name = "page") Integer page) {
+        Page<Review> reviewList = reviewQueryService.getReviewList(shopId, page - 1);
         return ApiResponse.onSuccess(ReviewConverter.toReviewPreviewListDto(reviewList));
     }
 
@@ -105,8 +105,8 @@ public class ShopRestController {
     })
     public ApiResponse<MissionResponseDto.MissionPreviewListDto> getMissionList(
             @ExistShop @PathVariable(name = "shopId") Long shopId,
-            @ValidPageNumber @RequestParam(name = "page") Integer page) {
-        Page<Mission> missionList = missionQueryService.getMissionList(shopId, page);
+            @CheckPage @RequestParam(name = "page") Integer page) {
+        Page<Mission> missionList = missionQueryService.getMissionList(shopId, page - 1);
         return ApiResponse.onSuccess(MissionConverter.toMissionPreviewListDto(missionList));
     }
 }

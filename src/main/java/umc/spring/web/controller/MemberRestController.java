@@ -28,7 +28,7 @@ import umc.spring.service.member_mission.MemberMissionCommandService;
 import umc.spring.service.member_mission.MemberMissionQueryService;
 import umc.spring.service.review.ReviewQueryService;
 import umc.spring.validation.annotation.ExistMember;
-import umc.spring.validation.annotation.ValidPageNumber;
+import umc.spring.validation.annotation.CheckPage;
 import umc.spring.web.dto.member.MemberRequestDto;
 import umc.spring.web.dto.member.MemberResponseDto.JoinMemberResultDto;
 import umc.spring.web.dto.member_mission.MemberMissionRequestDto;
@@ -71,8 +71,8 @@ public class MemberRestController {
     })
     public ApiResponse<ReviewResponseDto.ReviewPreviewListDto> getMemberReviewList(
             @ExistMember @PathVariable(name = "memberId") Long memberId,
-            @ValidPageNumber @RequestParam(name = "page") Integer page) {
-        Page<Review> memberReviewList = reviewQueryService.getMemberReviewList(memberId, page);
+            @CheckPage @RequestParam(name = "page") Integer page) {
+        Page<Review> memberReviewList = reviewQueryService.getMemberReviewList(memberId, page - 1);
         return ApiResponse.onSuccess(ReviewConverter.toReviewPreviewListDto(memberReviewList));
     }
 
@@ -87,8 +87,8 @@ public class MemberRestController {
     })
     public ApiResponse<MissionPreviewListDto> getMemberMissionList(
             @ExistMember @PathVariable(name = "memberId") Long memberId,
-            @ValidPageNumber @RequestParam(name = "page") Integer page) {
-        Page<MemberMission> memberMissionList = memberMissionQueryService.getMemberMissionList(memberId, page);
+            @CheckPage @RequestParam(name = "page") Integer page) {
+        Page<MemberMission> memberMissionList = memberMissionQueryService.getMemberMissionList(memberId, page - 1);
         return ApiResponse.onSuccess(MemberMissionConverter.toMissionPreviewListDto(memberMissionList));
     }
 

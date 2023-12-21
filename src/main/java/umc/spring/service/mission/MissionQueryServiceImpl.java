@@ -24,5 +24,4 @@ public class MissionQueryServiceImpl implements MissionQueryService {
         return missionRepository.findAllByShop(shop, PageRequest.of(page, 10));
     }
 
-
 }
